@@ -15,8 +15,8 @@ header_info
 echo -e "Loading..."
 APP="Librephotos"
 var_disk="16"
-var_cpu="1"
-var_ram="512"
+var_cpu="2"
+var_ram="2048"
 var_os="ubuntu"
 var_version="22.04"
 variables
