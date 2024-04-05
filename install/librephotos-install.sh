@@ -24,16 +24,20 @@ $STD curl -fsSL https://get.docker.com -o get-docker.sh
 $STD sudo sh get-docker.sh
 msg_ok "Finished installing Docker"
 
-msg_info "Installing LibrePhotos"
-$STD git clone https://github.com/LibrePhotos/librephotos-docker.git
-$STD cd librephotos-docker
-$STD cp librephotos.env .env
-
 read -r -p "Would you like to change the photo storage location? <y/N> " prompt
 if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
   read -r -p "Please input new directory from root:" directory
   $STD echo "Setting photo directory to: $directory"
   $STD mkdir -p $directory
+  $STD sed -i "s/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
+fi
+
+msg_info "Installing LibrePhotos"
+$STD git clone https://github.com/LibrePhotos/librephotos-docker.git
+$STD cd librephotos-docker
+$STD cp librephotos.env .env
+
+if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
   $STD sed -i "s/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
 fi
 
