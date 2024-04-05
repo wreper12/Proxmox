@@ -63,7 +63,7 @@ if (( $(df /boot | awk 'NR==2{gsub("%","",$5); print $5}') > 80 )); then
 fi
 
 cd
-cd /librephotos-docker
+cd librephotos-docker
 
 msg_info "Stopping LibrePhotos"
     docker compose down
