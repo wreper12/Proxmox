@@ -50,7 +50,7 @@ function default_settings() {
 function update_script() {
 header_info
 if [[ ! -d /opt/AdGuardHome ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
-msg_info ( $(df /boot | awk 'NR==2{gsub("%","",$5); print $5}')
+msg_info $(df /boot | awk 'NR==2{gsub("%","",$5); print $5}')
 if (( $(df /boot | awk 'NR==2{gsub("%","",$5); print $5}') > 80 )); then
   read -r -p "Warning: Storage is dangerously low, continue anyway? <y/N> " prompt
   [[ ${prompt,,} =~ ^(y|yes)$ ]] || exit
