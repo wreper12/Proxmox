@@ -66,15 +66,15 @@ cd
 cd librephotos-docker
 
 msg_info "Stopping LibrePhotos"
-    docker compose down -q
+    docker compose down -q --no-progress
 msg_ok "Stopped LibrePhotos"
 
 msg_info "Updating LibrePhotos"
-    docker compose pull -q
+    docker compose pull -q --no-progress
 msg_ok "Updated LibrePhotos"
 
 msg_info "Starting LibrePhotos"
-    sudo docker compose up -d -q
+    sudo docker compose up -d -q --no-progress
 msg_ok "Started LibrePhotos"
 
 exit
