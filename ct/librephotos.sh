@@ -13,7 +13,7 @@ EOF
 }
 header_info
 echo -e "Loading..."
-APP="Librephotos"
+APP="LibrePhotos"
 var_disk="16"
 var_cpu="2"
 var_ram="2048"
