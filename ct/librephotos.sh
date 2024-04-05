@@ -14,9 +14,9 @@ EOF
 header_info
 echo -e "Loading..."
 APP="LibrePhotos"
-var_disk="16"
+var_disk="24"
 var_cpu="2"
-var_ram="2048"
+var_ram="4096"
 var_os="ubuntu"
 var_version="22.04"
 variables
@@ -49,7 +49,7 @@ function default_settings() {
 
 function update_script() {
 header_info
-if [[ ! -d /opt/AdGuardHome ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
+if [[ ! -d /root/librephotos-docker ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
 REMAININGSTORAGE=$(df /boot | awk 'NR==2{gsub("%","",$5); print $5}')
 msg_info "${REMAININGSTORAGE} remaining"
 if (( $(df /boot | awk 'NR==2{gsub("%","",$5); print $5}') > 80 )); then
@@ -67,7 +67,7 @@ fi
 #cp -r /opt/AdGuardHome/AdGuardHome.yaml /opt/AdGuardHome/data adguard-backup/
 #cp AdGuardHome/AdGuardHome /opt/AdGuardHome/AdGuardHome
 #cp -r adguard-backup/* /opt/AdGuardHome/
-msg_ok "Updated AdguardHome"
+#msg_ok "Updated AdguardHome"
 
 msg_info "Starting AdguardHome"
 #systemctl start AdGuardHome
