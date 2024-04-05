@@ -8,7 +8,14 @@ source <(curl https://raw.githubusercontent.com/wreper12/Proxmox/main/misc/build
 function header_info {
 clear
 cat <<"EOF"
-    LibrePhotos
+ _     _ _             ______ _           _            
+| |   (_) |            | ___ \ |         | |           
+| |    _| |__  _ __ ___| |_/ / |__   ___ | |_ ___  ___ 
+| |   | | '_ \| '__/ _ \  __/| '_ \ / _ \| __/ _ \/ __|
+| |___| | |_) | | |  __/ |   | | | | (_) | || (_) \__ \
+\_____/_|_.__/|_|  \___\_|   |_| |_|\___/ \__\___/|___/
+                                                       
+                                                       
 EOF
 }
 header_info
