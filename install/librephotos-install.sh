@@ -26,7 +26,7 @@ msg_info "Installing LibrePhotos"
 $STD git clone https://github.com/LibrePhotos/librephotos-docker.git
 $STD cd librephotos-docker
 $STD cp librephotos.env .env
-$STD docker compose up -d
+$STD sudo docker compose up -d
 msg_ok "Finished installing LibrePhotos"
 
 motd_ssh
