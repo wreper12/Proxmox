@@ -29,7 +29,6 @@ if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
   read -r -p "Please input new directory from root:" directory
   $STD echo "Setting photo directory to: $directory"
   $STD mkdir -p $directory
-  $STD sed -i "s/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
 fi
 
 msg_info "Installing LibrePhotos"
@@ -38,7 +37,7 @@ $STD cd librephotos-docker
 $STD cp librephotos.env .env
 
 if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
-  $STD sed -i "s/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
+  $STD sed -i "/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
 fi
 
 $STD sudo docker compose up -d
