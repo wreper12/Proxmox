@@ -59,9 +59,6 @@ fi
 #systemctl stop AdGuardHome
 #msg_ok "Stopped AdguardHome"
 
-REMAININGSTORAGE=$(df /boot | awk 'NR==2{gsub("%","",$5); print $5}')
-echo "${REMAININGSTORAGE} remaining"
-
 msg_info "Updating LibrePhotos"
 
 #tar -xvf AdGuardHome_linux_amd64.tar.gz &>/dev/null
@@ -74,6 +71,9 @@ msg_info "Updating LibrePhotos"
 msg_info "Starting AdguardHome"
 #systemctl start AdGuardHome
 msg_ok "Started AdguardHome"
+
+REMAININGSTORAGE=$(df /boot | awk 'NR==2{gsub("%","",$5); print $5}')
+echo "${REMAININGSTORAGE} remaining"
 
 msg_info "Cleaning Up"
 #rm -rf AdGuardHome_linux_amd64.tar.gz AdGuardHome adguard-backup
