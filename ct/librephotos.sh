@@ -66,11 +66,11 @@ cd
 cd librephotos-docker
 
 msg_info "Stopping LibrePhotos"
-    docker compose down
+    docker compose down -d
 msg_ok "Stopped LibrePhotos"
 
 msg_info "Updating LibrePhotos"
-    docker compose pull
+    docker compose pull -d
 msg_ok "Updated LibrePhotos"
 
 msg_info "Starting LibrePhotos"
