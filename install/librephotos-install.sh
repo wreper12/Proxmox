@@ -39,7 +39,7 @@ $STD cp librephotos.env .env
 if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
   #$STD sed -i "/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
   #sed -i 's/scanDirectory=.//librephotos//pictures/scanDirectory=$directory/g' .env
-  sed -i 's/scanDirectory=.//librephotos//pictures/scanDirectory=$directory/' text.txt
+  sed -i 's/scanDirectory=.//librephotos//pictures/scanDirectory=$directory/' .env
 fi
 
 $STD sudo docker compose up -d
