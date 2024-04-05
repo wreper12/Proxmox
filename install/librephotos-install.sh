@@ -28,15 +28,15 @@ msg_info "Installing LibrePhotos"
 $STD git clone https://github.com/LibrePhotos/librephotos-docker.git
 $STD cd librephotos-docker
 $STD cp librephotos.env .env
-$STD echo -n "Enter the directory from root for storing photos and press [ENTER]: (Default: /home/librephotos/pictures"
-$STD read var_directory
-if ($var_directory == ""); then
-  var_directory = "/home/librephotos/pictures"
+
+read -r -p "Would you like to change the photo storage location? <y/N> " prompt
+if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
+  read -r -p "Please input new directory from root:" directory
+  $STD echo "Setting photo directory to: $directory"
+  $STD mkdir -p $directory
+  $STD sed -i "s/scanDirectory=./librephotos/pictures/scanDirectory=$directory/g" .env
 fi
-$STD echo "Setting photo directory to: $var_directory"
-$STD mkdir -p $var_directory
-$STD cp librephotos.env .env
-$STD sed -i "s/scanDirectory=./librephotos/pictures/$var_directory/g" .env
+
 $STD sudo docker compose up -d
 msg_ok "Finished installing LibrePhotos"
 
