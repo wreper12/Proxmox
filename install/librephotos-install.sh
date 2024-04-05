@@ -48,6 +48,8 @@ motd_ssh
 customize
 
 msg_info "Cleaning up"
+$STD cd
+$STD rm get-docker.sh
 $STD apt-get autoremove
 $STD apt-get autoclean
 msg_ok "Cleaned"
