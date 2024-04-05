@@ -15,37 +15,19 @@ update_os
 
 msg_info "Installing Dependencies"
 $STD apt-get install -y curl
-$STD apt-get install -y sudo
-$STD apt-get install -y mc
 msg_ok "Installed Dependencies"
 
-msg_info "Installing AdGuard Home"
-$STD tar zxvf <(curl -fsSL https://static.adtidy.org/adguardhome/release/AdGuardHome_linux_amd64.tar.gz) -C /opt
-msg_ok "Installed AdGuard Home"
+msg_info "Installing Docker"
+$STD curl -fsSL https://get.docker.com -o get-docker.sh
+$STD sudo sh get-docker.sh
+msg_ok "Finished installing Docker"
 
-msg_info "Creating Service"
-cat <<EOF >/etc/systemd/system/AdGuardHome.service
-[Unit]
-Description=AdGuard Home: Network-level blocker
-ConditionFileIsExecutable=/opt/AdGuardHome/AdGuardHome
-After=syslog.target network-online.target
-
-[Service]
-StartLimitInterval=5
-StartLimitBurst=10
-ExecStart=/opt/AdGuardHome/AdGuardHome "-s" "run"
-WorkingDirectory=/opt/AdGuardHome
-StandardOutput=file:/var/log/AdGuardHome.out
-StandardError=file:/var/log/AdGuardHome.err
-Restart=always
-RestartSec=10
-EnvironmentFile=-/etc/sysconfig/AdGuardHome
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl enable -q --now AdGuardHome.service
-msg_ok "Created Service"
+msg_info "Installing LibrePhotos"
+$STD git clone https://github.com/LibrePhotos/librephotos-docker.git
+$STD cd librephotos-docker
+$STD cp librephotos.env .env
+$STD docker-compose up -d
+msg_ok "Finished installing LibrePhotos"
 
 motd_ssh
 customize
