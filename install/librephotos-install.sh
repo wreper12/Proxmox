@@ -17,6 +17,8 @@ msg_info "Installing Dependencies"
 $STD apt-get install -y curl
 msg_ok "Installed Dependencies"
 
+$STD cd
+
 msg_info "Installing Docker"
 $STD curl -fsSL https://get.docker.com -o get-docker.sh
 $STD sudo sh get-docker.sh
